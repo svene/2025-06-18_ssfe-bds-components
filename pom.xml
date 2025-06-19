@@ -8,7 +8,7 @@
 
   <groupId>org.svenehrke</groupId>
   <artifactId>baloise-design-system-ssfe-components</artifactId>
-  <version>19.1.0</version>
+  <version>19.1.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>baloise-design-system-ssfe-components</name>
@@ -41,11 +41,13 @@
       <artifactId>jte</artifactId>
       <version>${jte.version}</version>
     </dependency>
+<!--
     <dependency>
       <groupId>gg.jte</groupId>
       <artifactId>jte-models</artifactId>
       <version>${jte.version}</version>
     </dependency>
+-->
 
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -88,8 +90,33 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>copy-resource-one</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/main/java</directory>
+                  <includes>
+                    <include>**/*.jte</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
   <!-- JTE-generate -->
+<!--
       <plugin>
         <groupId>gg.jte</groupId>
         <artifactId>jte-maven-plugin</artifactId>
@@ -98,11 +125,15 @@
           <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
           <contentType>Html</contentType>
           <gg.jte.developmentMode>false</gg.jte.developmentMode>
+-->
+<!--
           <extensions>
             <extension>
               <className>gg.jte.models.generator.ModelExtension</className>
             </extension>
           </extensions>
+-->
+<!--
         </configuration>
         <executions>
           <execution>
@@ -112,6 +143,8 @@
             </goals>
           </execution>
         </executions>
+-->
+<!--
         <dependencies>
           <dependency>
             <groupId>gg.jte</groupId>
@@ -119,7 +152,8 @@
             <version>${jte.version}</version>
           </dependency>
         </dependencies>
-      </plugin>
+-->
+<!--      </plugin>-->
 
       <!-- JTE-precompile -->
 <!--
@@ -143,6 +177,7 @@
         </executions>
       </plugin>
 -->
+
 
     </plugins>
 
